@@ -1,10 +1,5 @@
 from django.shortcuts import render
-
-finches = [
-    {'name': 'Alex', 'breed': 'House finch', 'description': 'friendly', 'age': 3},
-    {'name': 'Nala', 'breed': 'Pine siskin', 'description': 'mean and grumpy', 'age': 8},
-    {'name': 'Sidney', 'breed': 'Purple finch', 'description': 'shy', 'age': 4}
-]
+from .models import Finch
 
 def home(request):
     return render(request, 'home.html')
@@ -13,6 +8,13 @@ def about(request):
     return render(request, 'about.html')
 
 def finches_index(request):
+    finches = Finch.objects.all()
     return render(request, 'finches/index.html', {
         'finches': finches
+    })
+
+def finches_detail(request, finch_id):
+    finch = Finch.objects.get(id=finch_id)
+    return render(request, 'finches/detail.html', {
+        'finch' : finch
     })
