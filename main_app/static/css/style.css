@@ -13,4 +13,10 @@ body {
     text-align: right;
   }
 
-  
+.finchindex {
+  color: black;
+}
+
+.finchindex:hover {
+  color: rgb(0, 157, 255);
+}
